@@ -1,0 +1,38 @@
+<form name="myForm" [formGroup]="myForm">
+    <mat-form-field>
+        <input matInput
+                name="data_id"
+                formControlName="data_id"
+                placeholder="Id"
+                required
+                readonly
+                />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+                name="field_one"
+                formControlName="field_one"
+                placeholder="Field One"
+                required
+                />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+                name="field_two"
+                formControlName="field_two"
+                placeholder="Field Two"
+                required
+                />
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput
+                name="field_three"
+                formControlName="field_three"
+                placeholder="Field Three"
+                rows="40">
+        </textarea>
+    </mat-form-field>
+</form>
