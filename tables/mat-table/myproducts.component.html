@@ -1,0 +1,92 @@
+<div class="content-card mat-white-bg" #scrollTo>
+    <mat-table class="products-table"
+                #table [dataSource]="dataSource"
+                [@animateStagger]="{value:'50'}">
+
+        <!-- Image Column -->
+        <ng-container cdkColumnDef="main_image">
+            <mat-header-cell *cdkHeaderCellDef>Main Image</mat-header-cell>
+            <mat-cell *cdkCellDef="let product">
+                <img class="product-image"
+                        [src]="product.main_image" />
+            </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="title">
+            <mat-header-cell *cdkHeaderCellDef fxFlex="50">Title</mat-header-cell>
+            <mat-cell *cdkCellDef="let product" fxFlex="50" style="padding: 0 2%;">
+                <p class="text-truncate">{{product.title}}</p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Category Column -->
+        <ng-container cdkColumnDef="category">
+            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Category</mat-header-cell>
+            <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-md>
+                <p class="category text-truncate">
+                    {{product.category}}
+                </p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container cdkColumnDef="price">
+            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-xs>Price</mat-header-cell>
+            <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
+                <p class="price text-truncate">
+                    {{product.price | currency:'USD':'symbol'}}
+                </p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container cdkColumnDef="quantity">
+            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Quantity</mat-header-cell>
+            <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-sm>
+
+                <span class="quantity-indicator text-truncate"
+                        [ngClass]="{'mat-red-500-bg':product.quantity <= 5, 'mat-amber-500-bg':product.quantity > 5 && product.quantity <= 25,'mat-green-600-bg':product.quantity > 25}">
+                </span>
+                <span>
+                    {{product.quantity}}
+                </span>
+
+            </mat-cell>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container cdkColumnDef="state">
+            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-xs>State</mat-header-cell>
+            <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
+                <mat-icon *ngIf="product.state == 'active'" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                <mat-icon *ngIf="product.state != 'active'" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Variations Column -->
+        <ng-container cdkColumnDef="has_variations">
+            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-xs>Has Variations</mat-header-cell>
+            <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
+                <mat-icon *ngIf="product.has_variations == true" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                <mat-icon *ngIf="product.has_variations == false" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *cdkRowDef="let product; columns: displayedColumns;"
+                    class="product"
+                    matRipple
+                    [routerLink]="'/product/' + this.productsService.routeParams.store + '/' + this.productsService.routeParams.status + '/' + product.product_id">
+        </mat-row> 
+    </mat-table>
+
+    <mat-paginator #paginator
+                    [length]="productsService.count"
+                    [pageIndex]="0"
+                    [pageSize]="50"
+                    (page) = "pageEvent = loadPageData($event)">
+    </mat-paginator>
+
+</div>
