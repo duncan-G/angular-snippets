@@ -92,7 +92,7 @@ export class MyProductsComponent
                 this.MyProductsService.temp,this.currentState
             )
         if (this.currentCategory)
-            products = this.MyProductsService.updateSectionFilter(
+            products = this.MyProductsService.updateCategoryFilter(
                 products || this.MyProductsService.temp,this.currentSection
             )
 
