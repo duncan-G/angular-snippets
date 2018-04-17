@@ -48,8 +48,8 @@ export class MyComponent
             this.fileUploaded = true;
         };
 
-        // Read in the file if CSV file or text file
-        // fileReader.readAsText(acceptedFile.file);
+        // Read in the file 
+        fileReader.readAsText(acceptedFile.file);
         this.fileUploadForm.controls['requiredfile'].setValue([acceptedFile.file]);
     }
 
