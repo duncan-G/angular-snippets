@@ -67,7 +67,7 @@ export class MyProductsService implements Resolve<any>
             .set('min_info','True');
 
         return new Promise((resolve, reject) => {
-            this.http.get(this.pageUrl,{params : params})
+            this.http.get(productsUrl,{params : params})
                 .subscribe((response: any) => {
                     this.products = response.results;
                     this.displayListings = true;
