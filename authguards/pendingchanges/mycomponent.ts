@@ -10,7 +10,7 @@ import { MyService } from '.mycomponent.service.ts';
     styleUrls    : ['.my-component.scss'],
 })
 
-export class MyComponentComponent implements OnInit, OnDestroy
+export class MyComponent implements OnInit, OnDestroy
 {
     myForm: FormGroup;
     onFormChanged: Subscription;
