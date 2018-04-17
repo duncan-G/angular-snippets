@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
 <div class="content-card mat-white-bg" #scrollTo>
     <mat-table class="products-table"
                 #table [dataSource]="dataSource"
