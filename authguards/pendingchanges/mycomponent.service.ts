@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { dataUrl, updateDataUrl } from '../endpoints';
+import { dataUrl, updateDataUrl } from '../../endpoints';
 
 @Injectable()
 export class MyService implements Resolve<any>
