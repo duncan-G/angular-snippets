@@ -72,7 +72,7 @@ export class AuthService
         
     }
 
-
+    // Do not attempt to refresh the token while requesting to refresh the token (infinite loop)
     refreshToken() {
         let requestParams = new HttpParams()
             .set('refresh', 'false');
@@ -92,6 +92,7 @@ export class AuthService
         return !(date.valueOf() > (new Date().valueOf() + (offsetSeconds * 1000)));
     }
 
+    // Check if the JWT token is less than 5 minutes away from expiring
     public isTokenNearExpired(token: string, offsetSeconds?: number): boolean {
         return (this.isTokenExpired(token,300) && !this.isTokenExpired(token));
     }
