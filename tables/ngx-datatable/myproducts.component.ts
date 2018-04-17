@@ -25,6 +25,8 @@ export class MyProductsComponent
     states = [{id: "all",value: "All States"},
               {id: "active",value:"Active"},
               {id: "inactive",value:"Inactive"}]
+    
+    // filters
     private currentState: string = "all";
     private currentCategory: string ="all";
     private currentSearchText: string;
