@@ -37,8 +37,8 @@ export class MyProductsComponent
                 public snackBar             : MatSnackBar)
                 {}
 
-    ngOnInit() {
-        this.myProductsService.getProducts();
+    ngOnInit() 
+    {
     }
 
     // dynamically change row height
