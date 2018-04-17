@@ -85,32 +85,33 @@ export class MyProductsComponent
     }
 
     filter(){
-        var listings: any[];
+        var products: any[];
 
         if (this.currentState)
-            listings = this.bulkUpdateService.updateStateFilter(
-                this.bulkUpdateService.temp,this.currentState
+            products = this.MyProductsService.updateStateFilter(
+                this.MyProductsService.temp,this.currentState
             )
-        if (this.currentSection)
-            listings = this.bulkUpdateService.updateSectionFilter(
-                listings || this.bulkUpdateService.temp,this.currentSection
+        if (this.currentCategory)
+            products = this.MyProductsService.updateSectionFilter(
+                products || this.MyProductsService.temp,this.currentSection
             )
 
         if (this.currentSearchText)
-            listings = this.bulkUpdateService.updateSearchFilter(
-                listings || this.bulkUpdateService.temp,this.currentSearchText
+            products = this.MyProductsService.updateSearchFilter(
+                products || this.MyProductsService.temp,this.currentSearchText
             )
-        return listings
+        return products
     }
 
     applyFilter(temp){
         // update the rows
         this.myProductsService.products = temp;
         // Whenever the filter changes, always go back to the first page
-        this.listingTable.offset = 0;
+        this.productsTable.offset = 0;
     }
 
     onPageChange(event: any){
+        // Scroll to top on page change
         this.productsTable.element.scrollIntoView();
     }
 
