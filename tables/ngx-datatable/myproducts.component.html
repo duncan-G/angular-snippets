@@ -1,3 +1,47 @@
+<!-- Filters -->
+<div fxLayout="row" fxLayoutAlign="space-around stretch">
+    <!-- Search Filter -->
+    <div fxFlex="30" class="search-input-wrapper mx-12 m-md-0"
+        fxLayout="row" fxLayoutAlign="start center">
+        <label for="search" class="mr-8">
+            <mat-icon class="secondary-text">search</mat-icon>
+        </label>
+        <mat-form-field floatPlaceholder="never" fxFlex="1 0 auto">
+            <input id="search" 
+                    matInput
+                    placeholder="Search"
+                    (keyup)="searchFilter($event)"
+                    #searchFilterInput>
+        </mat-form-field>
+    </div>
+    
+    <!-- Category FIlter -->
+    <mat-form-field fxFlex="30">
+        <mat-select placeholder="Select Category"
+                    (change)="categoryFilter($event)">
+            <mat-option value="all">All Categories</mat-option>
+            <mat-option value="no_section">No Category</mat-option>
+            <mat-option *ngFor="let category of categories"
+                        [value]="category.category_id">
+                {{category.name}}
+            </mat-option> 
+        </mat-select>
+    </mat-form-field>
+    
+    <!-- State Filter -->
+    <mat-form-field fxFlex="30">
+        <mat-select placeholder="Select State"
+                    (change)="stateFilter($event)">
+            <mat-option *ngFor="let state of states"
+                        [value]="state.id">
+                {{state.value}}
+            </mat-option> 
+        </mat-select>
+    </mat-form-field>
+</div>
+<!-- End filters -->
+
+<!-- Products Table -->
 <div>
     <ngx-datatable
         class="material"
@@ -56,3 +100,4 @@
         
     </ngx-datatable>
 </div>
+<!-- End products table -->
