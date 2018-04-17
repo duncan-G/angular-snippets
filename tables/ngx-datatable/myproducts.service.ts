@@ -10,7 +10,6 @@ export class MyProductsService implements Resolve<any>
 {
     products: any[];
     temp: any[];
-    displayListings: boolean = false;
     loadingIndicator: boolean = true;
     reorderable: boolean = true;
 
