@@ -1,7 +1,7 @@
 import { OnInit, Component, ViewChild, ElementRef, Renderer2, Inject } from '@angular/core'
-import { AcceptedFile } from '../../../core/directives/dropzone/dropped-files/accepted-file';
-import { FileState } from '../../../core/directives/dropzone/utilities/file-state';
-import { DropZoneStyle } from '../../../core/directives/dropzone/utilities/drop-zone-style';
+import { AcceptedFile } from './fileupload-directive/dropzone/dropped-files/accepted/fileupload-directive/-file';
+import { FileState } from './fileupload-directive/dropzone/utilities/file-state';
+import { DropZoneStyle } from '/fileupload-directive/dropzone/utilities/drop-zone-style';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MyService } from './myservice';
 import { NgStyle, NumberFormatStyle } from '@angular/common';
