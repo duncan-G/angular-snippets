@@ -62,11 +62,11 @@ export class MyProductsComponent
 
     }
 
-    sectionFilter(event){
+    categoryFilter(event){
         // Clear search text when filtering by section
         this.clearSearch();
 
-        this.currentSection = event.value;
+        this.currentCategory = event.value;
         var temp = this.filter();
         this.applyFilter(temp);
     }
