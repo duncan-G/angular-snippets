@@ -24,7 +24,10 @@ export class MyProductsComponent
     formDoc: FormGroup;
     states = [{id: "all",value: "All States"},
               {id: "active",value:"Active"},
-              {id: "inactive",value:"Inactive"}]
+              {id: "inactive",value:"Inactive"}];
+    categories = [{id: "all",value: "All Categories"},
+                  {id: "c1",value:"Category 2"},
+                  {id: "c2",value:"Category 3"}]
     
     // filters
     private currentState: string = "all";
