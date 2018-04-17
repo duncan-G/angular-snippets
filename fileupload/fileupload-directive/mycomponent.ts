@@ -4,11 +4,6 @@ import { FileState } from '../../../core/directives/dropzone/utilities/file-stat
 import { DropZoneStyle } from '../../../core/directives/dropzone/utilities/drop-zone-style';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MyService } from './myservice';
-
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
 import { NgStyle, NumberFormatStyle } from '@angular/common';
 
 @Component({
@@ -59,8 +54,6 @@ export class MyComponent
     }
 
     constructor(private _fb                 : FormBuilder,
-                public dialog               : MatDialog,
-                private activeRoute         : ActivatedRoute,
                 private myService           : MyService,
                 )
                 {}
@@ -73,13 +66,15 @@ export class MyComponent
     
     onSubmit(){
         this.submitting = true;
-        this._submit();
-    }
-    
-    _submit() {
-        this.myService.submitFile(this.fileObject);
-        this.formDoc.controls['requiredfile'].setValue(null);
-        this.submitting = false;
+        this.myService.submitFile(this.fileObject)
+            .subscribe( 
+                response => {
+                this.fileUploadForm.controls(['requiredfile'].setValue(null);
+                this.submitting = false;},
+                error => {
+                    console.log(error);
+                });
+        }
     }
     
     uploadAnother(){
