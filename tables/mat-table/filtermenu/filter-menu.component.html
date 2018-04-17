@@ -1,0 +1,26 @@
+<button #openButton mat-icon-button class="open-button mat-primary-bg mat-elevation-z2" (click)="openBar()">
+    <mat-icon>settings</mat-icon>
+</button>
+
+<div class="side-menu-panel-overlay" #overlay [fxHide]="barClosed" [@fadeInOut]="!barClosed"></div>
+
+<div #panel class="side-menu-panel mat-white-bg mat-elevation-z8">
+
+    <button mat-icon-button class="close-button" (click)="closeBar()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="side-menu-panel-inner" fxLayout="column" fxLayoutAlign="start start">
+        <h3> State </h3> 
+        <mat-radio-group class="state-radio-group" 
+                         [(ngModel)]="productService.state"
+                         *ngFor="let state of states"
+                         (ngModelChange)="filterProductsByState($event)">
+            <mat-radio-button [value]=state.value>{{state.viewValue}}</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-divider></mat-divider>
+        <p> More stuff</p>
+    </div>
+
+</div>
