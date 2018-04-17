@@ -8,7 +8,7 @@ export class DataModel
     constructor(data?)
     {
       data = data || {};
-      this.data_id = data.data_id || 0;   //Optionally generate a new id
+      this.data_id = data.data_id || 0;   // Optional: Generate a new id if data_id === null
       this.field_one = data.field_one || '';
       this.field_two = data.field_two || '';
       this.field_three = data.field_three || '';
