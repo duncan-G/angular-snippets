@@ -72,8 +72,9 @@ export class AuthService
         
     }
 
-    // Do not attempt to refresh the token while requesting to refresh the token (infinite loop)
+    
     refreshToken() {
+        // Pass refresh=flase to avoid refresshing the token while requesting to refresh the token (infinite loop)
         let requestParams = new HttpParams()
             .set('refresh', 'false');
 
