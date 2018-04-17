@@ -20,7 +20,7 @@
         <mat-select placeholder="Select Category"
                     (change)="categoryFilter($event)">
             <mat-option value="all">All Categories</mat-option>
-            <mat-option value="no_section">No Category</mat-option>
+            <mat-option value="no_category">No Category</mat-option>
             <mat-option *ngFor="let category of categories"
                         [value]="category.category_id">
                 {{category.value}}
