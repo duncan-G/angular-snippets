@@ -27,7 +27,7 @@ export class MyComponentComponent implements OnInit, OnDestroy
     {
         // Subscribe to update data on changes
         this.onFormChanged =
-            this.myService.onFormChanged
+            this.myService.onDataChanged
                 .subscribe(data => {
                     if ( data )
                     {
@@ -48,26 +48,6 @@ export class MyComponentComponent implements OnInit, OnDestroy
             field_two           : [this.data.field_two,Validators.maxLength(140)],
             field_three         : [this.data.field_three]
     });
-    
-    checkPendingChanges(): Promise<boolean>
-    {
-        return new Promise<boolean>((resolve, reject) => {
-            if (this.productForm.pristine) resolve(true)
-
-            //check if pending changes are unsaved
-            if(!this.productForm.pristine && this.pageType == 'edit') {
-                let dialogRef = this.dialog.open(PendingChangesPopupDialog, {
-                    width: '350px',
-                });
-                dialogRef.afterClosed()
-                    .subscribe(result => {
-                        if (result) resolve(true);
-                        else reject(false)
-                    });
-            }
-            else resolve(true);
-        });
-    }
     
     saveModel()
     {
@@ -114,6 +94,25 @@ export class MyComponentComponent implements OnInit, OnDestroy
         return result
     }
 
+    checkPendingChanges(): Promise<boolean>
+    {
+        return new Promise<boolean>((resolve, reject) => {
+            if (this.myForm.pristine) resolve(true)
+
+            //check if pending changes are unsaved
+            if(!this.myForm.pristine) {
+                let dialogRef = this.dialog.open(PendingChangesPopupDialog, {
+                    width: '350px',
+                });
+                dialogRef.afterClosed()
+                    .subscribe(result => {
+                        if (result) resolve(true);
+                        else reject(false)
+                    });
+            }
+            else resolve(true);
+        });
+    }
 
     ngOnDestroy()
     {
