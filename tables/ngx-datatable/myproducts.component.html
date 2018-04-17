@@ -23,7 +23,7 @@
             <mat-option value="no_section">No Category</mat-option>
             <mat-option *ngFor="let category of categories"
                         [value]="category.category_id">
-                {{category.name}}
+                {{category.value}}
             </mat-option> 
         </mat-select>
     </mat-form-field>
