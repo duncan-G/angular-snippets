@@ -12,3 +12,4 @@ export let profileSetupUrl  : string = baseUrl + "api/auth/profile-setup/";
 export let tokenRefreshUrl  : string = baseUrl + "api/auth/refresh-token/";
 export let dataUrl          : string = baseUrl + "api/data/";
 export let updateDataUrl    : string = baseUrl + "api/update-data";
+export let productsUrl      : string = baseUrl + "api/products";
