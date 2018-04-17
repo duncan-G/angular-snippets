@@ -69,7 +69,6 @@ export class MyProductsService implements Resolve<any>
             this.http.get(productsUrl,{params : params})
                 .subscribe((response: any) => {
                     this.products = response.results;
-                    this.displayListings = true;
                     this.loadingIndicator = false
                     this.temp = this.products;
                     resolve(response);
