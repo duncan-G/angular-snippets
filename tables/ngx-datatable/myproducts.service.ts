@@ -78,29 +78,29 @@ export class MyProductsService implements Resolve<any>
         });
     }
 
-    updateStateFilter(listings,filterVal){
+    updateStateFilter(products,filterVal){
         // filter our data
         if (filterVal === 'inactive'){
-            return listings.filter(
+            return products.filter(
                 product => product.state != 'active');
         } else if (filterVal === 'all'){
-            return listings;
+            return products;
         } else {
-            return listings.filter(
+            return products.filter(
                 product => product.state === 'active');
         }
     }
 
-    updateSectionFilter(listings,filterVal){
+    updateCategoryFilter(products,filterVal){
         // filter our data
         if (filterVal === 0 || filterVal === "all"){
-            return listings
-        } else if (filterVal === 'no_section'){
-            return listings.filter(
-                product => product.shop_section_id === null);
+            return products
+        } else if (filterVal === 'no_category'){
+            return products.filter(
+                product => product.category === null);
         } else {
             return listings.filter(
-                product => product.shop_section_id === filterVal);
+                product => product.category === filterVal);
         }
 
     }
