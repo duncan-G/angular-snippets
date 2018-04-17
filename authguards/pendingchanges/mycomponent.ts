@@ -44,6 +44,7 @@ export class MyComponentComponent implements OnInit, OnDestroy
     createProductForm()
     {
         return this.formBuilder.group({
+            data_id             : [this.data.data_id,Validators.required],
             field_one           : [this.data.field_one,Validators.required],
             field_two           : [this.data.field_two,Validators.maxLength(140)],
             field_three         : [this.data.field_three]
@@ -73,7 +74,7 @@ export class MyComponentComponent implements OnInit, OnDestroy
     
     pruneUnchangedFields(original,edited)
     {
-        var diff = {};
+        var diff = {'data_id': original.data_id};
         var edited_keys = Object.keys(edited);
 
         for (let key of Object.keys(original)){
