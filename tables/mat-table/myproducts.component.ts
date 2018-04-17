@@ -40,16 +40,22 @@ export class MyProductsComponent implements OnInit
         this.dataSource = new FilesDataSource(this.productsService, this.paginator);
     }
 
+    // On next page or previous page
     loadPageData(event) {
         this.showLoadingBar = true;
+        
+        // get next or previous page
         if (event.pageIndex > this.currentPageIndex){
+            // get next page
             this.productsService.pageUrl = this.productsService.next;
         } else if (event.pageIndex < this.currentPageIndex){
+            // get previous page
             this.productsService.pageUrl = this.productsService.previous;
         };
         
         this.productsService.getProducts()
             .then(()=> {
+                // mat-paginator does not automatically scroll to top when viewing the next/previous page
                 // Scroll to the top of the page when pressing next or previous
                 this.elRef.nativeElement.scrollIntoView();
                 this.showLoadingBar = null;
