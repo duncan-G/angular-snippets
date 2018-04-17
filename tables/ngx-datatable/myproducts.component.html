@@ -1,0 +1,58 @@
+<div>
+    <ngx-datatable
+        class="material"
+        [rows]="myProductsService.products"
+        [loadingIndicator]="myProductsService.loadingIndicator"
+        [columnMode]="'force'"
+        [headerHeight]="48"
+        [footerHeight]="56"
+        [rowHeight]="'auto'"
+        [scrollbarH]="true"
+        [reorderable]="myProductsService.reorderable"
+        [selectionType]="'checkbox'"
+        [limit]="50"
+        (page)="onPageChange($event)"
+        #productsTable>
+
+        <!-- Checkbox to select products -->
+        <ngx-datatable-column [width]="48"
+                            [canAutoResize]="false"
+                            [sortable]="false">
+                            
+            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                        let-selectFn="selectFn">
+                <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></mat-checkbox>
+            </ng-template>
+
+            <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                        let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <!-- Product Id -->
+        <ngx-datatable-column [width]="100" [canAutoResize]="false" name="Product Id" prop="product_id">
+        </ngx-datatable-column>
+
+        <!-- Title -->
+        <ngx-datatable-column name="Title" prop="title">
+        </ngx-datatable-column>
+        
+        <!-- Category -->
+        <ngx-datatable-column [width]="200" [canAutoResize]="false" name="Category" prop="category">
+        </ngx-datatable-column>
+        
+        <!-- Quantity -->
+        <ngx-datatable-column [width]="200" [canAutoResize]="false" name="Quantity" prop="quantity">
+        </ngx-datatable-column>
+
+        <!-- State (active/inactive) -->
+        <ngx-datatable-column [width]="100" [canAutoResize]="false" name="State">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <mat-icon *ngIf="value == 'active'" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                <mat-icon *ngIf="value != 'active'" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+            </ng-template>
+        </ngx-datatable-column>
+        
+    </ngx-datatable>
+</div>
