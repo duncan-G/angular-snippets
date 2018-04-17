@@ -69,9 +69,10 @@ export class MyComponent
         this.myService.submitFile(this.fileObject)
             .subscribe( 
                 response => {
-                this.fileUploadForm.controls(['requiredfile'].setValue(null);
+                this.fileUploadForm.controls(['requiredfile'].setValue(null));
                 this.submitting = false;},
-                error => {
+                error => { // error handle
+                    this.submitting = false
                     console.log(error);
                 });
         }
